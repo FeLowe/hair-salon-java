@@ -1,0 +1,21 @@
+<h1> List of all reviews from $restaurant.getName().</h1>
+<form action="/reviews" method="post">
+  <input id="restaurantId" name="restaurantId" type="hidden" value="$restaurant.getId()">
+  <div class="form-group">
+    <label for="description">Review</label>
+    <input id="description" name="description" type="text" class="form-control" placeholder="Enter the review for your favorite restaurant" required>
+    </div>
+
+
+  <button type="submit" class="btn btn-success">Add Review</button>
+</form>
+
+
+
+#foreach ($review in $reviews)
+<ul>
+<li>$review.getDescription()</li>
+</ul>
+
+#end
+<a href="/">Back to main page</a>
