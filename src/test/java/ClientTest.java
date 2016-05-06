@@ -70,6 +70,21 @@ public class ClientTest {
     Client savedClient = Client.find(newClient.getId());
     assertEquals(savedClient.getStylistId(), newStylist.getId());
   }
+  @Test
+  public void Client_update_updatesClientName_true() {
+    Client newClient = new Client ("Lataevia", 1);
+    newClient.save();
+    newClient.update("Nadyia");
+    assertEquals("Nadyia", Client.find(newClient.getId()).getName());
+  }
 
+  @Test
+public void Clien_delete_deletesClient_true() {
+  Client newClient = new Client ("Lataevia", 1);
+  newClient.save();;
+  int newClientId = newClient.getId();
+  newClient.delete();
+  assertEquals(null, Client.find(newClientId));
+}
 
 }

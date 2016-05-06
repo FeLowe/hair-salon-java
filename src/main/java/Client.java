@@ -65,4 +65,14 @@ public static Client find(int id) {
      return client;
    }
  }
+
+ public void update(String name) {
+  try(Connection con = DB.sql2o.open()) {
+    String clientInfoRow = "UPDATE clients SET name = :name WHERE id = :id";
+    con.createQuery(clientInfoRow)
+      .addParameter("name", name)
+      .addParameter("id", id)
+      .executeUpdate();
+  }
+}
 }
