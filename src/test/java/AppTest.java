@@ -22,35 +22,12 @@ public class AppTest extends FluentTest {
   @ClassRule
   public static ServerRule server = new ServerRule();
 
-  @Test
-    public void rootTest() {
-      goTo("http://localhost:4567/");
-      assertThat(pageSource()).contains("Best Restaurants App");
-      assertThat(pageSource()).contains("Cuisine");
-      assertThat(pageSource()).contains("favorite cuisine");
-    }
-
-  @Test
-    public void getCuisineReturnSamePage() {
-      Cuisine myCuisine = new Cuisine ("Italian");
-      myCuisine.save();
-      String cuisinePath = String.format("http://localhost:4567/cuisines/%d", myCuisine.getId());
-      goTo(cuisinePath);
-      assertThat(pageSource()).contains("Italian");
-    }
-
-  @Test
-    public void getCuisineGetMultipleRestaurantsReturnAll() {
-      Cuisine myCuisine = new Cuisine ("Japanese");
-      myCuisine.save();
-      Restaurant firstRestaurant = new Restaurant ("SushiLand", myCuisine.getId());
-      firstRestaurant.save();
-      Restaurant secondRestaurant = new Restaurant ("SashimiLand", myCuisine.getId());
-      secondRestaurant.save();
-      String cuisinePath = String.format("http://localhost:4567/cuisines/%d", myCuisine.getId());
-      goTo(cuisinePath);
-      assertThat(pageSource()).contains("SushiLand");
-      assertThat(pageSource()).contains("SashimiLand");
-    }
+  // @Test
+  //   public void rootTest() {
+  //     goTo("http://localhost:4567/");
+  //     assertThat(pageSource()).contains("Best Restaurants App");
+  //     assertThat(pageSource()).contains("Cuisine");
+  //     assertThat(pageSource()).contains("favorite cuisine");
+  //   }
 
 }

@@ -16,5 +16,5 @@ public class DatabaseRule extends ExternalResource {
       con.createQuery(deleteStylistsQuery).executeUpdate();
       con.createQuery(deleteClientsQuery).executeUpdate();
     }
-
+  }
 }
