@@ -75,4 +75,13 @@ public static Client find(int id) {
       .executeUpdate();
   }
 }
+
+public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+  String clientInfoRow = "DELETE FROM clients WHERE id = :id;";
+  con.createQuery(clientInfoRow)
+    .addParameter("id", id)
+    .executeUpdate();
+  }
+}
 }
