@@ -39,49 +39,49 @@ public class Client {
     } else {
       Client newClient = (Client) otherClient;
       return this.getName().equals(newClient.getName()) &&
-             this.getId() == newClient.getId() &&
-             this.getStylistId() == newClient.getStylistId();
+      this.getId() == newClient.getId() &&
+      this.getStylistId() == newClient.getStylistId();
 
     }
   }
 
   public void save() {
-     try(Connection con = DB.sql2o.open()) {
-       String clientInfoRow = "INSERT INTO clients(name, stylist_id) VALUES (:name, :stylist_id)";
-       this.id = (int) con.createQuery(clientInfoRow, true)
-         .addParameter("name", this.name)
-         .addParameter("stylist_id", this.stylist_id)
-         .executeUpdate()
-         .getKey();
-     }
-}
+    try(Connection con = DB.sql2o.open()) {
+      String clientInfoRow = "INSERT INTO clients(name, stylist_id) VALUES (:name, :stylist_id)";
+      this.id = (int) con.createQuery(clientInfoRow, true)
+      .addParameter("name", this.name)
+      .addParameter("stylist_id", this.stylist_id)
+      .executeUpdate()
+      .getKey();
+    }
+  }
 
-public static Client find(int id) {
-   try(Connection con = DB.sql2o.open()) {
-     String clientInfoRow = "SELECT * FROM clients where id=:id";
-     Client client = con.createQuery(clientInfoRow)
-       .addParameter("id", id)
-       .executeAndFetchFirst(Client.class);
-     return client;
-   }
- }
+  public static Client find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String clientInfoRow = "SELECT * FROM clients where id=:id";
+      Client client = con.createQuery(clientInfoRow)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Client.class);
+      return client;
+    }
+  }
 
- public void update(String name) {
-  try(Connection con = DB.sql2o.open()) {
-    String clientInfoRow = "UPDATE clients SET name = :name WHERE id = :id";
-    con.createQuery(clientInfoRow)
+  public void update(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String clientInfoRow = "UPDATE clients SET name = :name WHERE id = :id";
+      con.createQuery(clientInfoRow)
       .addParameter("name", name)
       .addParameter("id", id)
       .executeUpdate();
+    }
   }
-}
 
-public void delete() {
-  try(Connection con = DB.sql2o.open()) {
-  String clientInfoRow = "DELETE FROM clients WHERE id = :id;";
-  con.createQuery(clientInfoRow)
-    .addParameter("id", id)
-    .executeUpdate();
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String clientInfoRow = "DELETE FROM clients WHERE id = :id;";
+      con.createQuery(clientInfoRow)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
   }
-}
 }

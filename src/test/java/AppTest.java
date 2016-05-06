@@ -22,12 +22,12 @@ public class AppTest extends FluentTest {
   @ClassRule
   public static ServerRule server = new ServerRule();
 
-  // @Test
-  //   public void rootTest() {
-  //     goTo("http://localhost:4567/");
-  //     assertThat(pageSource()).contains("Best Restaurants App");
-  //     assertThat(pageSource()).contains("Cuisine");
-  //     assertThat(pageSource()).contains("favorite cuisine");
-  //   }
+  @Test
+    public void rootTest() {
+      goTo("http://localhost:4567/");
+      assertThat(pageSource()).contains("Lowe's Hair Salon");
+      assertThat(pageSource()).contains("Hairstylist");
+      assertThat(pageSource()).contains("add hairstylist");
+    }
 
 }

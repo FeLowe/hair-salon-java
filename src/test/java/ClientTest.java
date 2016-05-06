@@ -27,8 +27,8 @@ public class ClientTest {
 
   @Test
   public void Client_getName_InstantiatesWithName_String() {
-  Client newClient = new Client ("Lataevia", 1);
-  assertEquals("Lataevia", newClient.getName());
+    Client newClient = new Client ("Lataevia", 1);
+    assertEquals("Lataevia", newClient.getName());
   }
 
   @Test
@@ -79,12 +79,12 @@ public class ClientTest {
   }
 
   @Test
-public void Clien_delete_deletesClient_true() {
-  Client newClient = new Client ("Lataevia", 1);
-  newClient.save();;
-  int newClientId = newClient.getId();
-  newClient.delete();
-  assertEquals(null, Client.find(newClientId));
-}
+  public void Clien_delete_deletesClient_true() {
+    Client newClient = new Client ("Lataevia", 1);
+    newClient.save();;
+    int newClientId = newClient.getId();
+    newClient.delete();
+    assertEquals(null, Client.find(newClientId));
+  }
 
 }
