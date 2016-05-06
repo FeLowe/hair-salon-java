@@ -6,18 +6,17 @@
 
 ## Description
 
-This webpage let users create their own dictionary. First user creates a word,  then its definition. The homepage lists out all of the words that have been created, and let the user click on them to view all of their definitions. A user should be able to add a word, and when viewing a word, be able to add one or more definitions.
+This application let hair salons create hairstylists's agenda (database) as it stores each client a specific hairstylist has. One hairstylist can have several clients, but a client will only have a hairstylist (as we are still dealing with "one to many" relationship).
 
 ## Setup/Installation Requirements
 
-* Access the webpage
-* Type in a word;
-* Click on the "create word!"button
-* Type in the word's definition
-* Click on the "create definition!"button
-* Click on "view all words" to view word list;
-* Click on a word to view its definition;
-* Click on "add another word" at anytime to add another word and its definition
+* CREATE DATABASE hair_salon;
+* CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+* CREATE TABLE clients (id serial PRIMARY KEY, name varchar, int stylist_id);
+* Create application functionalities (back-end);
+* Run all back-end tests;
+* Implement User Interface (front-end);
+* Run all front-end tests;
 
 ## Known Bugs
 
@@ -25,11 +24,11 @@ None;
 
 ## Support and contact details
 
-If while playing the game you run into any issues or have questions, ideas, concerns, or would like to make a contribution to the code, please contact me at fe_lowe@hotmail.com
+If while using this application you run into any issues or have questions, ideas, concerns, or would like to make a contribution to the code, please contact me at fe_lowe@hotmail.com
 
 ## Technologies Used
 
-Java, Spark, Gradle, Velocity, Bootstrap
+Java, Spark, Gradle, Velocity, Bootstrap, Heroku, psl
 
 ### License
 
