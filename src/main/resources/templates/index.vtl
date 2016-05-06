@@ -1,14 +1,14 @@
-<h1>Lowe's Hair Salon</h1>
+<h1>Lowes&rsquo;s Hair Salon</h1>
 
-<h3>Lowe's Hair Salon hairstylists and clients database.</h3>
+<h3>Lowe&rsquo;s Hair Salon hairstylists and clients database.</h3>
 
 <p><strong>To add hairstylist:</strong>  on "hairstylist form" type hairstylist name, than "add hairstylist"</p>
 <p><strong> To add a client to a hairstylist:</strong> click on the hairstylist's name, on "client form" type "client" name, than "add client" </p>
 <p><strong> To see hairstylist's list of clients:</strong> click on the hairstylist's name.</p>
 
-<form action="/stylist" method="post">
+<form action="/stylists" method="post">
   <div class="form-group">
-    <label for="stylist-name">Cuisine</label>
+    <label for="stylist-name">Hairstylist form:</label>
     <input id="stylist-name" name="stylist-name" type="text" class="form-control" placeholder="Enter hairstylist's name here" required>
     </div>
 
@@ -16,7 +16,7 @@
 </form>
 
 
-<h3>List of all hairstylists working at Lowe's Hair Salon:</h3>
+<h3>List of all hairstylists working at Lowe&rsquo;s Hair Salon:</h3>
 <ul>
   #foreach($stylist in $stylists)
   <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
