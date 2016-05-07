@@ -23,32 +23,45 @@ public class AppTest extends FluentTest {
   public static ServerRule server = new ServerRule();
 
   @Test
-   public void rootTest() {
-     goTo("http://localhost:4567/");
-     assertThat(pageSource()).contains("Lowe's Hair Salon");
-     assertThat(pageSource()).contains("hairstylist");
-     assertThat(pageSource()).contains("client");
-   }
-    //
-    //  @Test
-    //    public void StylistIsDisplayedTest() {
-    //   Stylist newStylist = new Stylist ("Sabrina");
-    //   newStylist.save();
-    //   String stylistPath = String.format("http://localhost:4567/stylists/%d", newStylist.getId());
-    //   goTo(stylistPath);
-    //   assertThat(pageSource()).contains("Sabrina");
-    // }
+    public void rootTest() {
+      goTo("http://localhost:4567/");
+      assertThat(pageSource()).contains("Lowes's Hair Salon");
+      assertThat(pageSource()).contains("hairstylist");
+      assertThat(pageSource()).contains("client");
+    }
+
   @Test
-  public void StylistShowPage() {
+    public void stylistShowPage() {
     Stylist newStylist = new Stylist("Sabrina");
     newStylist.save();
-    Client newClient = new Client("Lataevia", newClient.getId());
-    newClient.save();
     String stylistPath = String.format("http://localhost:4567/stylists/%d", newStylist.getId());
     goTo(stylistPath);
-    click("a", withText("Lataevia"));
+    assertThat(pageSource()).contains("Sabrina");
+  }
+
+  @Test
+    public void clientShowPage() {
+    Stylist newStylist = new Stylist("Sabrina");
+    newStylist.save();
+    Client newClient  = new Client ("Lataevia", newStylist.getId());
+    newClient.save();
+    String clientStylisPath = String.format("http://localhost:4567/stylists/%d", newStylist.getId());
+    goTo(clientStylisPath);
     assertThat(pageSource()).contains("Lataevia");
-    assertThat(pageSource()).contains("Go back");
+  }
+
+  @Test
+  public void allClientsAreDisplayedOnStylistPage() {
+    Stylist newStylist = new Stylist("Sabrina");
+    newStylist.save();
+    Client clientOne = new Client("Lataevia", newStylist.getId());
+    clientOne.save();
+    Client clientTwo = new Client("Nadyia", newStylist.getId());
+    clientTwo.save();
+    String clientPath = String.format("http://localhost:4567/stylists/%d", newStylist.getId());
+    goTo(clientPath);
+    assertThat(pageSource()).contains("Lataevia");
+    assertThat(pageSource()).contains("Nadyia");
   }
 
 }

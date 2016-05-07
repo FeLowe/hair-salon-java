@@ -1,0 +1,25 @@
+
+<h1> <em><strong>$stylist.getName()'s</strong></em> clients:</h1>
+
+#foreach ($client in $stylist.getClients())
+<ul>
+<li>$client.getName()</li>
+</ul>
+#end
+
+
+
+<h3>Add a client to $stylist.getName():</h3>
+
+<form action="/clients" method="post">
+  <input id="stylistId" name="stylistId" type="hidden" value="$stylist.getId()">
+  <div class="form-group">
+    <label for="client-name">Client form:</label>
+    <input id="client-name" name="client-name" type="text" class="form-control" placeholder="Enter client's name here" required>
+    </div>
+
+
+  <button type="submit" class="btn btn-success">Add client</button>
+</form>
+
+<a href="/">Go back</a>

@@ -13,7 +13,7 @@ public class Stylist{
   public String getName() {
     return name;
   }
-  
+
   public int getId() {
     return id;
   }
@@ -54,12 +54,12 @@ public class Stylist{
     }
   }
 
-  public List<Stylist> getStylists() {
+  public List<Client> getClients() {
     try(Connection con = DB.sql2o.open()) {
-      String stylistInfoRow = "SELECT * FROM clients WHERE stylist_id=:id";
-      return con.createQuery(stylistInfoRow)
+      String clientInfoRow = "SELECT * FROM clients WHERE stylist_id=:id";
+      return con.createQuery(clientInfoRow)
       .addParameter("id", this.id)
-      .executeAndFetch(Stylist.class);
+      .executeAndFetch(Client.class);
     }
   }
 
