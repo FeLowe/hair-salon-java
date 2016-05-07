@@ -3,11 +3,9 @@
 
 #foreach ($client in $stylist.getClients())
 <ul>
-<li>$client.getName()</li>
+  <li>$client.getName()</li>
 </ul>
 #end
-
-
 
 <h3>Add a client to $stylist.getName():</h3>
 
@@ -16,7 +14,7 @@
   <div class="form-group">
     <label for="client-name">Client form:</label>
     <input id="client-name" name="client-name" type="text" class="form-control" placeholder="Enter client's name here" required>
-    </div>
+  </div>
 
 
   <button type="submit" class="btn btn-success">Add client</button>

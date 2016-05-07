@@ -21,11 +21,11 @@ public class App {
     String layout = "templates/layout.vtl";
 
     get("/", (request, response) -> {
-       HashMap<String, Object> model = new HashMap<String, Object>();
-       model.put("stylists", Stylist.all());
-       model.put("template", "templates/stylists.vtl");
-       return new ModelAndView(model, layout);
-     }, new VelocityTemplateEngine());
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("stylists", Stylist.all());
+      model.put("template", "templates/stylists.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     post("/stylists", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -56,14 +56,6 @@ public class App {
       response.redirect(url);
       return null;
     });
-  //   get("/clients/:id", (request, response) -> {
-  //     HashMap<String, Object> model = new HashMap<String, Object>();
-  //     Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
-  //     model.put("stylist", stylist);
-  //     model.put("clients", stylist.getClients());
-  //     model.put("template", "templates/clients.vtl");
-  //     return new ModelAndView(model, layout);
-  //   }, new VelocityTemplateEngine());
-  // }
-}
+
+  }
 }

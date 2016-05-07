@@ -1,12 +1,11 @@
-
 import org.fluentlenium.adapter.FluentTest;
 import org.junit.ClassRule;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.fluentlenium.core.filter.FilterConstructor.*;
-import org.sql2o.*; // for DB support
-import org.junit.*; // for @Before and @After
+import org.sql2o.*;
+import org.junit.*;
 
 public class AppTest extends FluentTest {
   public WebDriver webDriver = new HtmlUnitDriver();
@@ -15,7 +14,7 @@ public class AppTest extends FluentTest {
   public WebDriver getDefaultDriver() {
     return webDriver;
   }
-
+  
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
@@ -23,15 +22,15 @@ public class AppTest extends FluentTest {
   public static ServerRule server = new ServerRule();
 
   @Test
-    public void rootTest() {
-      goTo("http://localhost:4567/");
-      assertThat(pageSource()).contains("Lowes's Hair Salon");
-      assertThat(pageSource()).contains("hairstylist");
-      assertThat(pageSource()).contains("client");
-    }
+  public void rootTest() {
+    goTo("http://localhost:4567/");
+    assertThat(pageSource()).contains("Lowes's Hair Salon");
+    assertThat(pageSource()).contains("hairstylist");
+    assertThat(pageSource()).contains("client");
+  }
 
   @Test
-    public void stylistShowPage() {
+  public void stylistShowPage() {
     Stylist newStylist = new Stylist("Sabrina");
     newStylist.save();
     String stylistPath = String.format("http://localhost:4567/stylists/%d", newStylist.getId());
@@ -40,7 +39,7 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-    public void clientShowPage() {
+  public void clientShowPage() {
     Stylist newStylist = new Stylist("Sabrina");
     newStylist.save();
     Client newClient  = new Client ("Lataevia", newStylist.getId());
