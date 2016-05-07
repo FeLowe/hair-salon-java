@@ -8,6 +8,8 @@
 
 This application let hair salons create hairstylists's agenda (database) as it stores each client a specific hairstylist has. One hairstylist can have several clients, but a client will only have a hairstylist (as we are still dealing with "one to many" relationship).
 
+Application Webpage: https://infinite-shore-74299.herokuapp.com/
+
 ## Setup/Installation Requirements
 
 * CREATE DATABASE hair_salon;
